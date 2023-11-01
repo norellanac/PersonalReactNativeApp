@@ -5,21 +5,18 @@
  * @format
  */
 
-import React from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import React, { useEffect } from 'react';
+import { useColorScheme } from 'react-native';
+import 'react-native-gesture-handler';
 
-import { setI18nConfig, translate } from './src/helpers/i18n';
+import { setI18nConfig } from './src/helpers/i18n';
 
 import { Colors } from 'react-native/Libraries/NewAppScreen';
+import { RootNavigator } from './src/routes/RootNavigator';
+import { useAuth } from './src/features/Authentication/hooks/useAuth';
 
 function App(): JSX.Element {
+  const { isAuth, checkIsAuth } = useAuth();
   const isDarkMode = useColorScheme() === 'dark';
   setI18nConfig();
 
@@ -27,28 +24,11 @@ function App(): JSX.Element {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <View style={{ alignItems: 'center', margin: 90 }}>
-            <Text style={{ color: isDarkMode ? '#ffffff' : '#000000' }}>
-              {translate('commons.begin')}
-            </Text>
-          </View>
-        </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
+  useEffect(() => {
+    checkIsAuth();
+  }, []);
+
+  return <RootNavigator />;
 }
 
 export default App;

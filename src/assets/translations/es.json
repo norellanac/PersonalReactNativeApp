@@ -32,13 +32,17 @@
     "auth": {
         "landing_screen": {
             "register": "Registrarme",
-            "login": "Ingresar"
+            "login": "Ingresar",
+            "auth_to_continue": "Autentícate para continuar",
+            "enter_username": "Ingresa tu usuario",
+            "enter_password": "Ingresa tu contraseña"
         }
     },
     "home": {
         "landing_screen": {
             "register": "Registrarme",
-            "login": "Ingresar"
+            "login": "Ingresar",
+            "logout": "Cerrar sesión"
         }
     }
 }
