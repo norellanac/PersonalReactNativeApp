@@ -3,7 +3,7 @@ import { StackScreenProps } from '@react-navigation/stack';
 import React, { useEffect, useState } from 'react';
 import { HomeStackParams } from './HomeStack';
 import { ActivityIndicator, Button, Text, View } from 'react-native';
-import { translate } from '../../../helpers/i18n';
+import { translate } from '../../../utils/i18n';
 import { useAuth } from '../../Authentication/hooks/useAuth';
 import {
   ListElemets,

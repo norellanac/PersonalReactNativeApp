@@ -2,7 +2,7 @@ import { StackScreenProps } from '@react-navigation/stack';
 import React from 'react';
 import { AuthStackParams } from './AuthStack';
 import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
-import { translate } from '../../../helpers/i18n';
+import { translate } from '../../../utils/i18n';
 import { useAuth } from '../hooks/useAuth';
 
 interface Props extends StackScreenProps<AuthStackParams, 'Login'> {}

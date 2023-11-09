@@ -7,7 +7,8 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from 'react-native';
-import { translate } from '../../../helpers/i18n';
+import { translate } from '../../../utils/i18n';
+import BottomSheet from '../../../components/molecules/BottomSheet';
 
 const Profile = () => {
   const handleEditPress = () => {};
@@ -51,11 +52,13 @@ const Profile = () => {
           <Text style={styles.statLabel}>Following</Text>
         </View>
       </View>
-      <TouchableOpacity style={styles.button} onPress={handleEditPress}>
-        <Text style={[styles.buttonText, styles.buttonTextColor]}>
-          {translate('home.landing_screen.logout')}
-        </Text>
-      </TouchableOpacity>
+      <BottomSheet>
+        <TouchableOpacity style={styles.button} onPress={handleEditPress}>
+          <Text style={[styles.buttonText, styles.buttonTextColor]}>
+            {translate('home.landing_screen.logout')}
+          </Text>
+        </TouchableOpacity>
+      </BottomSheet>
     </ScrollView>
   );
 };
@@ -113,6 +116,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     padding: 10,
     marginHorizontal: 20,
+    marginTop: 25,
   },
   buttonText: {
     fontSize: 16,
