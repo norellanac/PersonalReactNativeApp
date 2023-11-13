@@ -4,6 +4,7 @@ import { AuthStackParams } from './AuthStack';
 import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
 import { translate } from '../../../utils/i18n';
 import { useAuth } from '../hooks/useAuth';
+import { testID } from '../../../utils';
 
 interface Props extends StackScreenProps<AuthStackParams, 'Login'> {}
 
@@ -30,6 +31,7 @@ export const Login = ({ route, navigation }: Props) => {
           value={user}
           placeholder={translate('auth.landing_screen.enter_username')}
           placeholderTextColor="#807a79"
+          {...testID('username')}
         />
         <TextInput
           style={styles.input}
@@ -39,11 +41,13 @@ export const Login = ({ route, navigation }: Props) => {
           placeholderTextColor="#807a79"
           keyboardType="default"
           secureTextEntry={true}
+          {...testID('password')}
         />
         <Button
           color="#807a79"
           onPress={handleLogin}
-          title={translate('auth.landing_screen.register')}
+          title={translate('commons.next')}
+          {...testID('next')}
         />
       </View>
     </View>

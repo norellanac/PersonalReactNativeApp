@@ -1,34 +1,13 @@
 import * as React from 'react';
 import { Image, Text, View, useColorScheme } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { Landing } from '../features/Home/screens/Landing';
 import Profile from '../features/Home/screens/Profile';
 
-function HomeScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Home!</Text>
-    </View>
-  );
-}
-
-function SettingsScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Settings!</Text>
-    </View>
-  );
-}
-
-const TextTabBarIcon = ({ text }) => (
-  <Text style={{ fontSize: 40 }}>{text}</Text>
-);
-
 type TabBarIconProps = {
   name: string;
-  icon: ImageSourcePropType;
+  icon: string;
   label: string;
   focused: boolean;
 };
@@ -51,7 +30,7 @@ const TabBarIcon = ({ name, icon, label, focused }: TabBarIconProps) => {
 const Tab = createBottomTabNavigator();
 
 export const BottomTabNavigator = () => {
-    const isDarkMode = useColorScheme() === 'dark';
+  const isDarkMode = useColorScheme() === 'dark';
   return (
     <Tab.Navigator
       screenOptions={() => ({

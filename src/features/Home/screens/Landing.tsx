@@ -9,6 +9,7 @@ import {
   ListElemets,
   ListItems,
 } from '../../../components/organisms/ListElemets';
+import { testID } from '../../../utils';
 interface Props extends StackScreenProps<HomeStackParams, 'Home'> {}
 
 export const Landing = ({ route, navigation }: Props) => {
@@ -61,6 +62,7 @@ export const Landing = ({ route, navigation }: Props) => {
           color="#807a79"
           onPress={handleLogout}
           title={translate('home.landing_screen.logout')}
+          {...testID('logout')}
         />
       </View>
     </View>
