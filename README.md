@@ -55,12 +55,23 @@ Now that you have successfully run the app, let's modify it.
 2. For **Android**: Press
 
 
-## Running Tests
+## Running UNIT Tests
 
 This project can run Unit test using @testing-library/react-native
 
 ```bash
   yarn run test
+```
+
+## Running E2E Tests
+
+This project can run e2e test appium, webdriverio @testing-library/react-native
+
+```bash
+  yarn appium
+  yarn run test:e2e:all
+  yarn run test:e2e:ios
+  yarn run test:e2e:android
 ```
 
 ## NOTE: check comments on jest.config.js and package.json how to switch beetwen unit test and e2e test

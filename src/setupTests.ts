@@ -25,6 +25,24 @@ jest.mock('@react-navigation/native', () => {
     useFocusEffect: () => jest.fn(),
     useNavigation: () => ({
       navigate: jest.fn(),
+      goBack: jest.fn(),
     }),
+    navigation: {
+      navigate: jest.fn(),
+      goBack: jest.fn(),
+    },
   };
 });
+
+jest.mock('i18n-js', () => ({
+  I18n: () => {
+    return {
+      t: jest.fn((str: string) => str),
+      i18n: { changeLanguage: jest.fn() },
+    };
+  },
+}));
+
+jest.mock('@react-native-async-storage/async-storage', () =>
+  require('@react-native-async-storage/async-storage/jest/async-storage-mock'),
+);

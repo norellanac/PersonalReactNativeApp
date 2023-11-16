@@ -4,14 +4,19 @@ module.exports = {
   ],
   testTimeout: 999000,
   bail: 0,
-  //***** run test -- yarn test -- */
-  //*****e2e COMMENT this to execute e2e test
-  // preset: 'react-native',
-  // setupFilesAfterEnv: ['./src/setupTests.ts'],
-  //*****e2e comment this  to execute e2e test
   //**************************************************************************************** */
-  //*****UNcomment this to run e2e test -- yarn test:e2e:android -- */
-  setupFilesAfterEnv: ['./e2e-jest.setup.js'],
-  testMatch: ['**/__e2e__/*.test.ts'],
-  //*****UNcomment this to run e2e test -- yarn test:e2e:android -- */
+  //**************************************************************************************** */
+  //********************************UNIT TEST************************************************ */
+  //*****UNcomment this section previos to execute UNIT  test and comment if you execute e2e test */
+  preset: 'react-native',
+  setupFilesAfterEnv: ['./src/setupTests.ts'],
+  //*****UNcomment this section previos to execute UNIT  test and comment if you execute e2e test */
+  //**************************************************************************************** */
+  //**************************************************************************************** */
+  //********************************E2E TEST************************************************ */
+  //***** E2E TEST **********/
+  //*****UNcomment this section previos to execute E2E test and comment if you execute UNIT test */
+  // setupFilesAfterEnv: ['./e2e-jest.setup.js'],
+  // testMatch: ['**/__e2e__/*.e2etest.ts'],
+  //*****UNcomment this section previos to execute E2E test and comment if you execute UNIT test */
 };
