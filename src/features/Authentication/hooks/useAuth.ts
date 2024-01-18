@@ -1,33 +1,26 @@
-import { useState, useEffect } from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import {
+  loginUser,
+  logoutUser,
+  setAuthenticated,
+} from '../../../redux/slices/userSlice';
+import { useAppDispatch } from '../../../hooks/useAppDispatch';
 
 export const useAuth = () => {
-  const [isAuth, setIsAuth] = useState<boolean>(false);
+  const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    checkIsAuth();
-  }, []);
-
-  const checkIsAuth = async () => {
+  const login = async (email: string, name: string, id: number) => {
     try {
-      const value = await AsyncStorage.getItem('isAuth');
-      if (value !== null) {
-        setIsAuth(value === 'true');
-      }
+      dispatch(loginUser({ email, name, id }));
+      dispatch(setAuthenticated(true));
     } catch (error) {
-      console.error('Error reading isAuth from AsyncStorage', error);
+      console.log(error);
     }
   };
 
-  const login = async () => {
-    await AsyncStorage.setItem('isAuth', 'true');
-    setIsAuth(true);
+  const logout = () => {
+    dispatch(setAuthenticated(false));
+    dispatch(logoutUser());
   };
 
-  const logout = async () => {
-    await AsyncStorage.setItem('isAuth', 'false');
-    setIsAuth(false);
-  };
-
-  return { isAuth, login, logout, checkIsAuth };
+  return { login, logout };
 };

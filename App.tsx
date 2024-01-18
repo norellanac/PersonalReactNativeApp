@@ -14,20 +14,16 @@ import { useAuth } from './src/features/Authentication/hooks/useAuth';
 import { setI18nConfig } from './src/utils';
 import AlertModal from './src/components/molecules/AlertModal';
 import { useNetInfo } from '@react-native-community/netinfo';
+import { Provider } from 'react-redux';
+import { store } from './src/redux/stores/store';
 
 function App(): JSX.Element {
   const netInfo = useNetInfo();
-
-  const { isAuth, checkIsAuth } = useAuth();
   const isDarkMode = useColorScheme() === 'dark';
   setI18nConfig();
 
-  useEffect(() => {
-    checkIsAuth();
-  }, []);
-
   return (
-    <>
+    <Provider store={store}>
       <RootNavigator />
       <AlertModal
         visible={!netInfo.isConnected}
@@ -38,7 +34,7 @@ function App(): JSX.Element {
           console.log('Positive button pressed');
         }}
       />
-    </>
+    </Provider>
   );
 }
 
