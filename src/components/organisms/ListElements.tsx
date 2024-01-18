@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   StyleSheet,
   Text,
@@ -8,34 +8,33 @@ import {
   Pressable,
 } from 'react-native';
 
-export type ListItems = {
-  user: {
-    email: string;
-    id: number;
-    name: string;
-    phone: string;
-    username: string;
-    website: string;
-  };
+export type ListItem = {
+  id: string | number;
+  title: string;
+  subtitle: string;
+  urlImage?: string;
+  urlElement?: string;
 };
 
-export const ListElemets = (props: ListItems) => {
-  const userData = props.user;
+export type ListElementsProps = {
+  elements: ListItem[];
+};
 
-  const [listItem, setListItem] = useState(userData);
-
-  const renderItem = ({ item }) => {
+export const ListElements = (props: ListElementsProps) => {
+  const renderItem = ({ item }: { item: ListItem }) => {
     return (
       <View style={styles.row}>
         <Image
           source={{
-            uri: 'https://cdn-icons-png.flaticon.com/128/847/847969.png',
+            uri:
+              item.urlImage ||
+              'https://cdn-icons-png.flaticon.com/128/2268/2268182.png',
           }}
           style={styles.pic}
         />
         <View>
           <View style={styles.nameContainer}>
-            <Text style={styles.nameTxt}>{item.name}</Text>
+            <Text style={styles.nameTxt}>{item.title}</Text>
           </View>
           <View style={styles.end}>
             <Image
@@ -47,14 +46,16 @@ export const ListElemets = (props: ListItems) => {
                 uri: 'https://cdn-icons-png.flaticon.com/128/10460/10460991.png',
               }}
             />
-            <Text style={styles.time}>{item.email}</Text>
+            <Text style={styles.time}>{item.subtitle}</Text>
           </View>
         </View>
         <Pressable onPress={() => console.log('Pressed event')}>
           <Image
             style={[styles.icon, { marginRight: 50 }]}
             source={{
-              uri: 'https://cdn-icons-png.flaticon.com/128/10101/10101096.png',
+              uri:
+                'https://cdn-icons-png.flaticon.com/128/10101/10101096.png' ||
+                item.urlElement,
             }}
           />
         </Pressable>
@@ -65,11 +66,8 @@ export const ListElemets = (props: ListItems) => {
   return (
     <View style={{ flex: 1 }}>
       <FlatList
-        extraData={listItem}
-        data={listItem}
-        keyExtractor={item => {
-          return item.id;
-        }}
+        data={props.elements}
+        keyExtractor={item => item.id.toString()}
         renderItem={renderItem}
       />
     </View>

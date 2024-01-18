@@ -1,4 +1,4 @@
-import React, { useRef, useCallback, useEffect, useState } from 'react';
+import React, { useRef, useCallback, useState } from 'react';
 import {
   createNavigationContainerRef,
   NavigationContainer,
@@ -8,14 +8,11 @@ import { AuthNavigation } from '../features/Authentication';
 import { AuthorizedApp } from './AuthorizedApp';
 import { useColorScheme } from 'react-native';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
-import { useAuth } from '../features/Authentication/hooks/useAuth';
+import { selectIsAuthenticated } from '../redux/slices/userSlice';
+import { useAppSelector } from '../hooks/useAppSelector';
 
 export const RootNavigator = () => {
-  const { isAuth, checkIsAuth } = useAuth();
-
-  useEffect(() => {
-    checkIsAuth();
-  }, []);
+  const isAuthenticated = useAppSelector(selectIsAuthenticated);
 
   const [navContainerKey, setNavContainerKey] = useState(1);
 
@@ -57,7 +54,7 @@ export const RootNavigator = () => {
       ref={navigationRef}
       onReady={handleNavigationReady}
       onStateChange={handleTrackRouteChange}>
-      {isAuth ? <AuthorizedApp /> : <AuthNavigation />}
+      {isAuthenticated ? <AuthorizedApp /> : <AuthNavigation />}
     </NavigationContainer>
   );
 };

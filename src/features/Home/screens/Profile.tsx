@@ -9,9 +9,13 @@ import {
 } from 'react-native';
 import { translate } from '../../../utils/i18n';
 import BottomSheet from '../../../components/molecules/BottomSheet';
+import { useAppSelector } from '../../../hooks/useAppSelector';
+import { useAuth } from '../../Authentication/hooks/useAuth';
+import { selectUser } from '../../../redux/slices/userSlice';
 
 const Profile = () => {
-  const handleEditPress = () => {};
+  const { email, name, id} = useAppSelector(selectUser);
+  const { logout } = useAuth();
 
   return (
     <ScrollView style={styles.container}>
@@ -29,7 +33,9 @@ const Profile = () => {
               uri: 'https://www.bootdey.com/img/Content/avatar/avatar1.png',
             }}
           />
-          <Text style={[styles.nameText, styles.textColor]}>Your Name</Text>
+          <Text style={[styles.nameText, styles.textColor]}>
+            {name || 'Your Name'}
+          </Text>
         </View>
       </View>
       <View style={styles.bioContainer}>
@@ -53,7 +59,7 @@ const Profile = () => {
         </View>
       </View>
       <BottomSheet>
-        <TouchableOpacity style={styles.button} onPress={handleEditPress}>
+        <TouchableOpacity style={styles.button} onPress={logout}>
           <Text style={[styles.buttonText, styles.buttonTextColor]}>
             {translate('home.landing_screen.logout')}
           </Text>

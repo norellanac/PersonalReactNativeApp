@@ -12,8 +12,7 @@ export const Login = ({ route, navigation }: Props) => {
   const { login } = useAuth();
 
   const handleLogin = () => {
-    login();
-    navigation.navigate('App');
+    login(user, 'Demo User', 1);
   };
   const [user, setUser] = React.useState('');
   const [password, setPassword] = React.useState('');
@@ -44,6 +43,7 @@ export const Login = ({ route, navigation }: Props) => {
           {...testID('password')}
         />
         <Button
+          disabled={user.length === 0}
           color="#807a79"
           onPress={handleLogin}
           title={translate('commons.next')}
