@@ -24,6 +24,7 @@ export const Landing = ({ route, navigation }: Props) => {
     });
   };
 
+  console.log('isLoading', isLoading);
   return (
     <View
       style={{

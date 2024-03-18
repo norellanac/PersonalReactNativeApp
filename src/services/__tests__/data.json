@@ -1,0 +1,40 @@
+{
+    "data": [
+        {
+            "id": "90",
+            "symbol": "BTC",
+            "name": "Bitcoin",
+            "nameid": "bitcoin",
+            "rank": 1,
+            "price_usd": "41516.49",
+            "percent_change_24h": "-2.26",
+            "percent_change_1h": "-0.79",
+            "percent_change_7d": "-9.56",
+            "price_btc": "1.00",
+            "market_cap_usd": "813551597549.09",
+            "volume24": 24294075619.797882,
+            "volume24a": 24930434723.37009,
+            "csupply": "19595865.00",
+            "tsupply": "19595865",
+            "msupply": "21000000"
+        },
+        {
+            "id": "80",
+            "symbol": "ETH",
+            "name": "Ethereum",
+            "nameid": "ethereum",
+            "rank": 2,
+            "price_usd": "2461.91",
+            "percent_change_24h": "-2.67",
+            "percent_change_1h": "-0.92",
+            "percent_change_7d": "-4.63",
+            "price_btc": "0.059300",
+            "market_cap_usd": "301277127552.87",
+            "volume24": 9495428298.880754,
+            "volume24a": 9850882577.721313,
+            "csupply": "122375302.00",
+            "tsupply": "122375302",
+            "msupply": ""
+        }
+    ]
+}

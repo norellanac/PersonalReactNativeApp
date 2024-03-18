@@ -19,7 +19,7 @@ it('renders correctly', () => {
   const { debug, getByTestId } = render(
     <Landing navigation={{ goback, navigate, setoptions }} route={undefined} />,
   );
-  debug();
+  //debug();
   fireEvent.press(screen.getByText('auth.landing_screen.register'));
   fireEvent.press(getByTestId('login'));
 });

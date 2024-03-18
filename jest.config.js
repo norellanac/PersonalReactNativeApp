@@ -1,6 +1,6 @@
 module.exports = {
   transformIgnorePatterns: [
-    'node_modules/(?!(jest-)?@?react-native|@react-native-community|@react-navigation)',
+    'node_modules/(?!(jest-)?@?react-native|@react-native-community|@react-navigation|react-redux|@reduxjs/toolkit)',
   ],
   testTimeout: 999000,
   bail: 0,

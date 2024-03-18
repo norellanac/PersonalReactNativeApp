@@ -15,12 +15,16 @@ import { setI18nConfig } from './src/utils';
 import AlertModal from './src/components/molecules/AlertModal';
 import { useNetInfo } from '@react-native-community/netinfo';
 import { Provider } from 'react-redux';
-import { store } from './src/redux/stores/store';
+import { setupStore } from './src/redux/stores/store';
+//import { store } from './src/redux/stores/store';
 
 function App(): JSX.Element {
   const netInfo = useNetInfo();
   const isDarkMode = useColorScheme() === 'dark';
   setI18nConfig();
+
+  const store = setupStore();
+
 
   return (
     <Provider store={store}>
