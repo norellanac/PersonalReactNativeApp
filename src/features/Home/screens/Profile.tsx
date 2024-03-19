@@ -7,11 +7,13 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from 'react-native';
+
 import { translate } from '../../../utils/i18n';
 import BottomSheet from '../../../components/molecules/BottomSheet';
 import { useAppSelector } from '../../../hooks/useAppSelector';
 import { useAuth } from '../../Authentication/hooks/useAuth';
 import { selectUser } from '../../../redux/slices/userSlice';
+import { version } from '../../../../package.json';
 
 const Profile = () => {
   const { email, name, id} = useAppSelector(selectUser);
@@ -57,6 +59,11 @@ const Profile = () => {
           <Text style={styles.statCount}>9101</Text>
           <Text style={styles.statLabel}>Following</Text>
         </View>
+      </View>
+      <View style={{ alignItems: 'center', marginTop: 100 }}>
+        <Text style={[styles.nameText, styles.textColor]}>
+          Version: {version}
+        </Text>
       </View>
       <BottomSheet>
         <TouchableOpacity style={styles.button} onPress={logout}>
